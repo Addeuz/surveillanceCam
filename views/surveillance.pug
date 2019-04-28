@@ -1,0 +1,65 @@
+doctype html
+html(lang='en')
+	head
+		meta(charset='UTF-8')
+		meta(name='viewport', content='width=device-width, initial-scale=1.0')
+		meta(http-equiv='X-UA-Compatible', content='ie=edge')
+		script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js')
+		link(rel='stylesheet', href='./style/surveillance.css')
+		link(href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', rel='stylesheet', integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T', crossorigin='anonymous')
+		title Surveillance cam
+	body
+		!= messages('message', locals)
+		#logoutDiv
+			a#logoutButton.btn.btn-light(href='/logout') Logout
+
+		#container
+
+			if user
+				h1 Surveillance cam
+				if user.admin
+					//- Bilder
+					#intruder
+						#imageDiv
+							if intruder
+								img(id="image" src="", alt="")
+								h3 INTRUDER!!!
+							else
+								h3 No intruder
+						//- Buttons and intruder alert
+						#intruderText
+							#intruderAlert.alert.alert-danger Intruder alert!!
+							button(type='button' id="intruderButtons" class='btn btn-success' onclick='intruderSafe();') Intruder safe!!!
+							button(type='button' id="intruderButtons" class='btn btn-danger' onclick='intruderUnsafe();') Intruder NOT safe!!!
+				else
+					#intruder
+						#intruderText
+							#intruderAlert.alert.alert-danger Intruder alert!!
+							button(type='button' id="intruderButtons" class='btn btn-success' onclick='intruderSafe();') Intruder safe!!!
+							button(type='button' id="intruderButtons" class='btn btn-danger' onclick='intruderUnsafe();') Intruder NOT safe!!!
+			else
+				h1 You're not logged in
+
+		script.
+			const socket = io('ws://localhost:3000', {transports: ['websocket']});
+			let intruder = false;
+
+			socket.on('connect', function () {
+				console.log('Connected to server!');
+
+			})
+
+			socket.on('respond', function (data) {
+				console.log(data.hello);
+			})
+
+			function intruderSafe() {
+				// Add code for pi here
+			}
+			function intruderUnsafe() {
+				// Add code for pi here
+			}
+
+
+
+

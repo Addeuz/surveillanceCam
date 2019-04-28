@@ -1,0 +1,81 @@
+html {
+	height: 100vh;
+}
+
+body {
+	min-height: 100vh;
+	background-image: url(../images/drawing.svg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+
+#container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	height: 90vh;
+}
+
+#registerDiv {
+	display: flex;
+	justify-content: flex-end;
+	width: 100%;
+	padding: 1vh;
+}
+
+#loginBox {
+	width: 40vh;
+	display: flex;
+	flex-direction: column;
+}
+#loginBoxHeader {
+	padding: 1.5vh 0;
+	width: 100%;
+	display: flex;
+	background-color: white;
+	-moz-border-top-left-radius: 10px;
+	-webkit-border-top-left-radius: 10x;
+	-khtml-border-top-left-radius: 10px;
+	border-top-left-radius: 10px;
+	-moz-border-top-right-radius: 10px;
+	-webkit-border-top-right-radius: 10x;
+	-khtml-border-top-right-radius: 10px;
+	border-top-right-radius: 10px;
+}
+#loginBoxHeader h2 {
+	margin: 0 auto;
+}
+
+#loginBoxInputs {
+	background-color: #a4e8fcff;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10x;
+	-khtml-border-radius: 10px;
+	border-radius: 10px;
+}
+
+#loginForm {
+	display: flex;
+	padding: 2vh 5vh 2vh 5vh;
+	flex-direction: column;
+}
+
+#loginBoxInputs #loginButton {
+	margin: 1rem 0;
+	/* width: 30%; */
+	align-self: center;
+}
+
+.alert-error {
+	color: #a94442;
+	background-color: #f2dede;
+	border-color: #ebccd1;
+}
+
+.alert-success {
+	color: #3c753d;
+	background-color: #dff0d8;
+	border-color: #d6e9c6;
+}

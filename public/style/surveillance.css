@@ -1,0 +1,82 @@
+html {
+	height: 100vh;
+}
+
+body {
+	min-height: 100vh;
+	background-image: url(../images/drawing.svg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+
+#container #intruder {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: center;
+	flex-direction: row;
+	padding: 0 12vw;
+	height: 90vh;
+}
+
+#container h1 {
+	flex: 1 100%;
+	text-align: center;
+	font-size: 5vw;
+	padding-top: 25vh;
+	color: white;
+}
+
+#intruderText {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 500px;
+	height: 500px;
+}
+#intruderAlert {
+	text-align: center;
+	width: 100%;
+}
+
+#imageDiv {
+	width: 500px;
+	height: 500px;
+	text-align: center;
+}
+#imageDiv h3 {
+	padding-top: 8em;
+}
+
+#intruderButtons {
+	padding: 20px 50px;
+}
+#intruderButtons:last-child {
+	padding: 20px 50px;
+	margin-top: 15px;
+}
+
+#intruderGuest {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: center;
+	flex-direction: row;
+	padding: 0 12vw;
+	height: 90vh;
+}
+
+#logoutDiv {
+	display: flex;
+	justify-content: flex-end;
+	width: 100%;
+	padding: 1vh;
+}
+
+@media screen and (max-width: 1315px) {
+	#intruderDiv {
+		padding-top: 20px;
+	}
+}
