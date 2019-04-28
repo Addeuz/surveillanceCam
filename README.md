@@ -8,4 +8,4 @@ Using web sockets and a raspberry pi to detect motion and send a photo of the in
 4. npm install
 5. npm start
 
-Access the server from a webbrowser with 'IPADDRESSOFPI:3000'
+Access the server from a web browser with 'IPADDRESSOFPI:3000'
