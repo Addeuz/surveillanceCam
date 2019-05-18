@@ -1,31 +1,41 @@
 {
-	"name": "surveillanceproject",
-	"version": "1.0.0",
-	"description": "The project in a course called websystem",
-	"main": "app.js",
-	"scripts": {
-		"start": "node app"
-	},
-	"keywords": [
-		"socket.io",
-		"express",
-		"surveillance",
-		"motion-detector"
-	],
-	"author": "addeuz",
-	"license": "ISC",
-	"dependencies": {
-		"bcryptjs": "^2.4.3",
-		"body-parser": "^1.19.0",
-		"connect-flash": "^0.1.1",
-		"express": "^4.16.4",
-		"express-messages": "^1.0.1",
-		"express-session": "^1.16.1",
-		"express-validator": "^5.3.1",
-		"mongoose": "^5.5.4",
-		"passport": "^0.4.0",
-		"passport-local": "^1.0.0",
-		"pug": "^2.0.3",
-		"socket.io": "^2.2.0"
-	}
+  "name": "surveillanceproject",
+  "version": "1.0.0",
+  "description": "The project in a course called websystem",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app"
+  },
+  "keywords": [
+    "socket.io",
+    "express",
+    "surveillance",
+    "motion-detector"
+  ],
+  "author": "addeuz",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "connect-flash": "^0.1.1",
+    "express": "^4.16.4",
+    "express-messages": "^1.0.1",
+    "express-session": "^1.16.1",
+    "express-validator": "^5.3.1",
+    "mongoose": "^5.5.4",
+    "onoff": "^4.1.1",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "pi-camera": "^1.2.1",
+    "pug": "^2.0.3",
+    "socket.io": "^2.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Addeuz/surveillanceCam.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Addeuz/surveillanceCam/issues"
+  },
+  "homepage": "https://github.com/Addeuz/surveillanceCam#readme"
 }

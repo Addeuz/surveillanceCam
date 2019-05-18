@@ -14,17 +14,16 @@ body {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-around;
-	align-items: center;
+	align-items: flex-start;
 	flex-direction: row;
-	padding: 0 12vw;
-	height: 90vh;
+	padding: 60px 12vw 0 12vw;
 }
 
 #container h1 {
 	flex: 1 100%;
 	text-align: center;
 	font-size: 5vw;
-	padding-top: 25vh;
+	padding-top: 20vh;
 	color: white;
 }
 
@@ -52,9 +51,9 @@ body {
 
 #intruderButtons {
 	padding: 20px 50px;
+	width: 500px;
 }
 #intruderButtons:last-child {
-	padding: 20px 50px;
 	margin-top: 15px;
 }
 
@@ -73,6 +72,14 @@ body {
 	justify-content: flex-end;
 	width: 100%;
 	padding: 1vh;
+}
+
+#calling h1 {
+	color: #a94442;
+}
+
+#intruderImage {
+	transform: rotate(180deg);
 }
 
 @media screen and (max-width: 1315px) {

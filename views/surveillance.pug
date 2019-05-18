@@ -7,32 +7,36 @@ html(lang='en')
 		script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js')
 		link(rel='stylesheet', href='./style/surveillance.css')
 		link(href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', rel='stylesheet', integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T', crossorigin='anonymous')
+		script(src="https://code.jquery.com/jquery-3.4.0.min.js")
 		title Surveillance cam
 	body
 		!= messages('message', locals)
+		if shutdownMessage
+			div(class="alert alert-success" id="shutdownMessage" onclick="hideShutdownMessage();") Last shutdown was successful: #{shutdownMessage}! Click to close!
+		else if shutdownMessage === null
+			div(class="alert alert-danger" id="shutdownMessage" onclick="hideShutdownMessage();") Last shutdown wasn't successful! Data might've been lost! Click to close!
+		else if shutdownMesssage === ''
+
 		#logoutDiv
 			a#logoutButton.btn.btn-light(href='/logout') Logout
-
 		#container
-
 			if user
 				h1 Surveillance cam
+
+				div(id="calling" hidden)
+						h1 Calling 112!
 				if user.admin
 					//- Bilder
-					#intruder
+					div(id="intruder" hidden)
 						#imageDiv
-							if intruder
-								img(id="image" src="", alt="")
-								h3 INTRUDER!!!
-							else
-								h3 No intruder
+							img(id="intruderImage" src="", alt="")
 						//- Buttons and intruder alert
 						#intruderText
-							#intruderAlert.alert.alert-danger Intruder alert!!
+							div(class="alert alert-danger" id="intruderAlert") Intruder alert!!
 							button(type='button' id="intruderButtons" class='btn btn-success' onclick='intruderSafe();') Intruder safe!!!
 							button(type='button' id="intruderButtons" class='btn btn-danger' onclick='intruderUnsafe();') Intruder NOT safe!!!
 				else
-					#intruder
+					div(id="intruder" hidden)
 						#intruderText
 							#intruderAlert.alert.alert-danger Intruder alert!!
 							button(type='button' id="intruderButtons" class='btn btn-success' onclick='intruderSafe();') Intruder safe!!!
@@ -41,25 +45,53 @@ html(lang='en')
 				h1 You're not logged in
 
 		script.
-			const socket = io('ws://localhost:3000', {transports: ['websocket']});
+			// Change the address to the address of your pi:port
+			const socket = io ('ws://192.168.1.4:3000', {transports: ['websocket']});
 			let intruder = false;
 
-			socket.on('connect', function () {
+
+			socket.on('connect', function() {
 				console.log('Connected to server!');
+				//socket.emit('greet', 'Hello Mr.Server');
+			});
 
-			})
-
-			socket.on('respond', function (data) {
+			socket.on('respond', function(data) {
 				console.log(data.hello);
-			})
+			});
+
+			socket.on('intruder', function(data) {
+				document.getElementById("intruder").removeAttribute("hidden");
+				socket.emit("light", data);
+			});
+			socket.on('intruderFixed', function(data) {
+				console.log(data);
+				document.location.reload(true);
+			});
+
+			let imgChunks = [];
+
+			socket.on('img-chunk', function(data) {
+				if(data.image) {
+					let img = document.getElementById('intruderImage');
+					img.setAttribute('src', 'data:image/jpeg;base64,' + data.buffer);
+				} else {
+					console.log("No image")
+				}
+			});
+
+			function hideShutdownMessage() {
+				$('#shutdownMessage').hide()
+				socket.emit("hideMessage", '');
+			}
 
 			function intruderSafe() {
-				// Add code for pi here
+				document.getElementById("intruder").setAttribute("hidden","");
+				socket.emit("intruderAction", 0);
 			}
+
 			function intruderUnsafe() {
-				// Add code for pi here
+				socket.emit("intruderAction", 1)
+				document.getElementById("intruder").setAttribute("hidden","");
+				document.getElementById("calling").removeAttribute("hidden");
 			}
-
-
-
 
