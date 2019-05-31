@@ -86,4 +86,21 @@ body {
 	#intruderDiv {
 		padding-top: 20px;
 	}
+	
+	#imageDiv {
+		height: 100%;
+	}
+
+	#intruderImage {
+		width: 300px;
+	}
+
+	#intruderButtons {
+		width: 300px;
+	}
+	
+	#intruderText {
+		height: 100%;
+		padding-top: 15px;
+	}
 }

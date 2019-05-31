@@ -170,15 +170,15 @@ io.on('connection', function(socket) {
 			myCamera
 				.snap()
 				.then(result => {
-					const readStream = fs.createReadStream(
-						path.resolve(
-							__dirname,
-							`./intruder/intruder${intruderNr}_${intruderDate}.jpg`
-						),
-						{
-							encoding: 'binary',
-						}
-					)
+					//const readStream = fs.createReadStream(
+					//	path.resolve(
+					//		__dirname,
+					//		`./intruder/intruder${intruderNr}_${intruderDate}.jpg`
+					//	),
+					//	{
+					//		encoding: 'binary',
+					//	}
+					//)
 
 					console.log('Image taken', result)
 					fs.readFile(
